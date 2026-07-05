@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Construction Safety Twin Dashboard</title>
+    <link rel="stylesheet" href="/dashboard/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="rail" aria-label="System summary">
+        <div>
+          <p class="eyebrow">Edge-AI Digital Twin</p>
+          <h1>Heavy Machinery Safety Ops</h1>
+        </div>
+        <section class="status-stack" aria-label="Live system status">
+          <div class="status-item critical">
+            <span class="status-value" id="criticalCount">2</span>
+            <span>critical alerts</span>
+          </div>
+          <div class="status-item">
+            <span class="status-value" id="latencyNow">38 ms</span>
+            <span>edge latency</span>
+          </div>
+          <div class="status-item">
+            <span class="status-value" id="passRate">83%</span>
+            <span>scenario pass rate</span>
+          </div>
+        </section>
+        <section class="model-box">
+          <h2>Model Stack</h2>
+          <dl>
+            <div><dt>Detection</dt><dd>YOLOv8n edge profile</dd></div>
+            <div><dt>Tracking</dt><dd>ByteTrack ID continuity</dd></div>
+            <div><dt>Risk</dt><dd>TTC + zone geometry</dd></div>
+            <div><dt>Explainability</dt><dd>Rule trace per warning</dd></div>
+          </dl>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Live Prototype</p>
+            <h2>Construction Site A - Unreal Digital Twin</h2>
+          </div>
+          <div class="run-state">
+            <span class="pulse"></span>
+            <span id="clock">Running</span>
+          </div>
+        </header>
+
+        <section class="hero-grid">
+          <article class="camera-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Live Unreal Feeds</p>
+                <h3>Multi-camera safety coverage</h3>
+              </div>
+              <span class="badge live" id="feedState">Unreal feed</span>
+            </div>
+            <div class="active-feed" id="activeFeed"></div>
+            <div class="feed-grid" id="feedGrid"></div>
+          </article>
+
+          <article class="risk-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Risk Score</p>
+                <h3 id="riskLabel">Severe</h3>
+              </div>
+              <span class="score" id="riskScore">91</span>
+            </div>
+            <div class="risk-meter" aria-hidden="true">
+              <span id="riskBar"></span>
+            </div>
+            <div class="reason-box" id="reasonBox">
+              Worker track intersects dump-truck reverse blind spot. Time-to-collision is below 2.0 seconds.
+            </div>
+            <div class="latency-chart" id="latencyChart" aria-label="Latency history"></div>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel alerts">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Alerts</p>
+                <h3>Explainable warnings</h3>
+              </div>
+              <button id="cycleAlert" type="button">Cycle scenario</button>
+            </div>
+            <div id="alertList" class="alert-list"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Validation</p>
+                <h3>Pass/fail scenario checks</h3>
+              </div>
+              <span class="badge">6 scenarios</span>
+            </div>
+            <div id="validationTable" class="validation-table"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Cameras</p>
+                <h3>Edge node health</h3>
+              </div>
+              <span class="badge">7 feeds</span>
+            </div>
+            <div id="cameraGrid" class="camera-grid"></div>
+          </article>
+        </section>
+      </section>
+    </main>
+    <script src="/dashboard/app.js"></script>
+  </body>
+</html>
